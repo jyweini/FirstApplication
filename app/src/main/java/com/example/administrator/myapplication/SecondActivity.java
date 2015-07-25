@@ -1,19 +1,40 @@
 package com.example.administrator.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 public class SecondActivity extends ActionBarActivity {
-
+    private TextView output;
+    private Button mBtnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-    }
+        Intent i = getIntent();
+        String outp = i.getStringExtra("userInput");
+        output = (TextView) findViewById(R.id.output);
+        output.setText(outp);
+        mBtnBack = (Button) findViewById(R.id.btn_back);
+        mBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.putExtra("data", "test");
+                Log.d("SecondActivity", "zhunbeifanhuishuju" + "test");
+                setResult(1, i);
+                finish();
+            }
+        });
 
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

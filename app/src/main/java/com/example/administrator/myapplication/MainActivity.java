@@ -24,14 +24,20 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(MainActivity.this,SecondActivity.class);
+
                 String input=mEtInput.getText().toString();
                 Log.d("MainActivity",input );
-                
+                i.putExtra("userInput",input);
                 startActivity(i);
+                startActivityForResult(i,1);
             }
         });
 
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("MainActivity","fanhui"+data.getStringExtra("data"));
+    }
 }
