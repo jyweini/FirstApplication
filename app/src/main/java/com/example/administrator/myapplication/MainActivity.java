@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
                 Intent i=new Intent(MainActivity.this,SecondActivity.class);
                 String input=mEtInput.getText().toString();
                 Log.d("MainActivity",input );
-                
+                //add
                 startActivity(i);
             }
         });
